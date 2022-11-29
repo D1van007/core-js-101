@@ -229,8 +229,9 @@ function toCsvText(arr) {
  *   [ 0, 1, 2, 3, 4, 5 ] => [ 0, 1, 4, 9, 16, 25 ]
  *   [ 10, 100, -1 ]      => [ 100, 10000, 1 ]
  */
-function toArrayOfSquares(/* arr */) {
-  throw new Error('Not implemented');
+function toArrayOfSquares(arr) {
+  // throw new Error('Not implemented');
+  return arr.map((e) => e * e);
 }
 
 
@@ -266,8 +267,11 @@ function getMovingSum(arr) {
  * [ 'a', 'b', 'c' , null ]  => [ "b", null ]
  * [ "a" ] => []
  */
-function getSecondItems(/* arr */) {
-  throw new Error('Not implemented');
+function getSecondItems(arr) {
+  // throw new Error('Not implemented');
+  // eslint-disable-next-line no-return-assign, no-param-reassign, no-confusing-arrow
+  // eslint-disable-next-line no-return-assign, no-const-assign
+  return arr.filter((e, i) => i % 2 !== 0);
 }
 
 
@@ -285,8 +289,10 @@ function getSecondItems(/* arr */) {
  *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
-function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('Not implemented');
+function propagateItemsByPositionIndex(arr) {
+  // throw new Error('Not implemented');
+  // eslint-disable-next-line no-confusing-arrow
+  return arr.map((e, i) => (new Array(i + 1).fill(e))).flat();
 }
 
 
@@ -303,8 +309,9 @@ function propagateItemsByPositionIndex(/* arr */) {
  *   [ 1,2,3,4,5,6,7,8,9,10 ] => [ 10, 9, 8 ]
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
-function get3TopItems(/* arr */) {
-  throw new Error('Not implemented');
+function get3TopItems(arr) {
+  // throw new Error('Not implemented');
+  return arr.slice(-3).reverse();
 }
 
 
@@ -321,8 +328,11 @@ function get3TopItems(/* arr */) {
  *   [ null, 1, 'elephant' ] => 1
  *   [ 1, '2' ] => 1
  */
-function getPositivesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getPositivesCount(arr) {
+  // throw new Error('Not implemented');
+// eslint-disable-next-line max-len
+// eslint-disable-next-line no-return-assign, no-param-reassign, no-unused-vars, no-shadow, no-unused-expressions
+  return arr.filter((e) => e > 0 && typeof e === 'number').length;
 }
 
 /**
@@ -338,8 +348,22 @@ function getPositivesCount(/* arr */) {
  *   [ 'nine','eight','nine','eight'] => [ 'eight','eight','nine','nine']
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
-function sortDigitNamesByNumericOrder(/* arr */) {
-  throw new Error('Not implemented');
+function sortDigitNamesByNumericOrder(arr) {
+  // throw new Error('Not implemented');
+  const zeroNine = {
+    0: 'zero',
+    1: 'one',
+    2: 'two',
+    3: 'three',
+    4: 'four',
+    5: 'five',
+    6: 'six',
+    7: 'seven',
+    8: 'eight',
+    9: 'nine',
+  };
+  // eslint-disable-next-line no-return-assign, no-param-reassign, no-shadow, max-len
+  return arr.map((e) => e = Object.keys(zeroNine).find((key) => zeroNine[key] === e)).sort((a, b) => +a - +b).map((e) => e = zeroNine[e]);
 }
 
 /**
@@ -354,8 +378,13 @@ function sortDigitNamesByNumericOrder(/* arr */) {
  *   [ -1, 1, -1, 1 ]      => 0
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
-function getItemsSum(/* arr */) {
-  throw new Error('Not implemented');
+function getItemsSum(arr) {
+  // throw new Error('Not implemented');
+  // eslint-disable-next-line no-return-assign, no-param-reassign, no-confusing-arrow, no-shadow
+  if (arr.length === 0) {
+    return 0;
+  }
+  return arr.reduce((acc, e) => acc + e);
 }
 
 /**
@@ -370,8 +399,10 @@ function getItemsSum(/* arr */) {
  *  [ -1, 'false', null, 0 ] => 2
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
-function getFalsyValuesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getFalsyValuesCount(arr) {
+  // throw new Error('Not implemented');
+  // eslint-disable-next-line no-extra-boolean-cast
+  return arr.filter((e) => !!!e).length;
 }
 
 /**
@@ -388,8 +419,9 @@ function getFalsyValuesCount(/* arr */) {
  *    [ null, undefined, null ], null => 2
  *    [ true, 0, 1, 'true' ], true => 1
  */
-function findAllOccurrences(/* arr, item */) {
-  throw new Error('Not implemented');
+function findAllOccurrences(arr, item) {
+  // throw new Error('Not implemented');
+  return arr.filter((e) => e === item).length;
 }
 
 /**
@@ -403,8 +435,9 @@ function findAllOccurrences(/* arr, item */) {
  *    [1, 2, 3, 4, 5]                   => '1,2,3,4,5'
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
-function toStringList(/* arr */) {
-  throw new Error('Not implemented');
+function toStringList(arr) {
+  // throw new Error('Not implemented');
+  return arr.join();
 }
 
 
@@ -473,8 +506,11 @@ function getIdentityMatrix(/* n */) {
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
  *     3, 3   => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  // throw new Error('Not implemented');
+  const arr = new Array(end - start + 1).fill(start);
+  // eslint-disable-next-line no-return-assign, no-param-reassign
+  return arr.map((e, i) => e += i);
 }
 
 /**
@@ -488,8 +524,9 @@ function getIntervalArray(/* start, end */) {
  *   [ 'a', 'a', 'a', 'a' ]  => [ 'a' ]
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  // throw new Error('Not implemented');
+  return Array.from(new Set(arr));
 }
 
 /**
@@ -559,6 +596,10 @@ function selectMany(/* arr, childrenSelector */) {
  */
 function getElementByIndexes(/* arr, indexes */) {
   throw new Error('Not implemented');
+  // eslint-disable-next-line no-undef, no-unused-vars
+  // const temp = [];
+  // indexes.map((e) => arr.push(temp[e]));
+  // return temp.flat(Infinity).slice(-1);
 }
 
 
@@ -573,15 +614,24 @@ function getElementByIndexes(/* arr, indexes */) {
  *
  * @example
  *   [ 1, 2, 3, 4, 5 ]   =>  [ 4, 5, 3, 1, 2 ]
- *    \----/   \----/
+ *    \----/   \----or
  *     head     tail
  *
  *   [ 1, 2 ]  => [ 2, 1 ]
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  // throw new Error('Not implemented');
+  // eslint-disable-next-line no-return-assign, no-param-reassign, no-shadow, max-len
+  if (arr.length === 1) {
+    return arr;
+  // eslint-disable-next-line max-len
+  } if (arr.length % 2) {
+    // eslint-disable-next-line max-len
+    return arr.splice(Math.ceil(arr.length / 2), arr.length).concat(arr[Math.floor(arr.length - 1)]).concat(arr.splice(0, Math.ceil(arr.length - 1)));
+  // eslint-disable-next-line max-len
+  } return arr.splice(Math.ceil(arr.length / 2), arr.length).concat(arr.splice(0, Math.ceil(arr.length)));
 }
 
 

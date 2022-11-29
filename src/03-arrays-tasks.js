@@ -594,11 +594,11 @@ function selectMany(/* arr, childrenSelector */) {
  *   ['one','two','three'], [2]       => 'three'  (arr[2])
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
-function getElementByIndexes(/* arr, indexes */) {
-  throw new Error('Not implemented');
+function getElementByIndexes(arr, indexes) {
+  // throw new Error('Not implemented');
   // eslint-disable-next-line no-undef, no-unused-vars
   // const temp = [];
-  // indexes.map((e) => arr.push(temp[e]));
+  return indexes.reduce((acc, e) => acc[e], arr);
   // return temp.flat(Infinity).slice(-1);
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* ********************************************************************************************
  *                                                                                            *
  * Please read the following tutorial before implementing tasks:                               *
@@ -467,8 +468,20 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
+function sortCitiesArray(arr) {
+  // throw new Error('Not implemented');
+  return arr.sort((a, b) => {
+    const x = a.country.toLowerCase();
+    const y = b.country.toLowerCase();
+    return x.localeCompare(y);
+  // eslint-disable-next-line consistent-return, array-callback-return
+  }).sort((a, b) => {
+    if (a.country === b.country) {
+      const xa = a.city.toLowerCase();
+      const ya = b.city.toLowerCase();
+      return xa.localeCompare(ya);
+    }
+  });
 }
 
 /**
@@ -489,10 +502,15 @@ function sortCitiesArray(/* arr */) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  // throw new Error('Not implemented');
+  const arr = new Array(n).fill(0);
+  const matrix = new Array(n).fill(arr);
+  // eslint-disable-next-line no-return-assign, no-param-reassign, no-unused-vars
+  const modMatrix = matrix.map((e) => e = new Array(n).fill(0));
+  // eslint-disable-next-line no-return-assign, no-shadow, no-param-reassign
+  return modMatrix.map((e, ind) => e.map((e, i) => (ind === i ? e += 1 : e)));
 }
-
 /**
  * Creates an array of integers from the specified start to end (inclusive)
  *
@@ -559,8 +577,14 @@ function distinct(arr) {
  *    "Poland" => ["Lodz"]
  *   }
  */
-function group(/* array, keySelector, valueSelector */) {
-  throw new Error('Not implemented');
+function group(array, keySelector, valueSelector) {
+  // throw new Error('Not implemented');
+  const map = new Map();
+  // eslint-disable-next-line array-callback-return
+  array.map((e) => {
+    map.set(keySelector(e), (map.get(keySelector(e)) === undefined ? [] : map.get(keySelector(e))).concat([valueSelector(e)]));
+  });
+  return map;
 }
 
 
@@ -577,8 +601,12 @@ function group(/* array, keySelector, valueSelector */) {
  *   [[1, 2], [3, 4], [5, 6]], (x) => x     =>   [ 1, 2, 3, 4, 5, 6 ]
  *   ['one','two','three'], (x) => x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
-function selectMany(/* arr, childrenSelector */) {
-  throw new Error('Not implemented');
+function selectMany(arr, childrenSelector) {
+  // throw new Error('Not implemented');
+  // eslint-disable-next-line no-unused-vars
+  // const tempx = arr.flat(Infinity).join('').split('').map((e) => Number(e));
+
+  return arr.map((e) => childrenSelector(e)).flat();
 }
 
 

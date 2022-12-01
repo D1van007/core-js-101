@@ -109,18 +109,7 @@ function timeSpanToString(startDate, endDate) {
  */
 function angleBetweenClockHands(date) {
   // throw new Error('Not implemented');
-  const myDate = new Date(date);
-  let hourDeg = (myDate.getHours() - 3) * 30 + myDate.getMinutes() * 0.5;
-  const minDeg = myDate.getMinutes() * 6;
-  if (hourDeg === 12) {
-    hourDeg = myDate.getHours() * 0 + myDate.getMinutes() * 0.5;
-  }
-  let anglesDeg = Math.abs(hourDeg - minDeg);
-  if (anglesDeg > 180) {
-    anglesDeg = 360 - anglesDeg;
-  }
-  // eslint-disable-next-line no-mixed-operators
-  return Math.abs(anglesDeg * Math.PI / 180);
+ 
 }
 
 

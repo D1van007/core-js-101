@@ -512,28 +512,28 @@ function getMatrixProduct(m1, m2) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(position) {
+function evaluateTicTacToePosition(/* position */) {
   // throw new Error('Not implemented');
-  for (let i = 0; i < position.length; i += 1) {
-    for (let j = 0; i < position[i].length; j += 1) {
-      if (position[i][j] === position[i][j + 1] && position[i][j] === position[i][j + 2]) {
-        if (position[i][j] !== undefined) return position[i][j];
-      } if (position[i][j] === position[i + 1][j] && position[i][j] === position[i + 2][j]) {
-        if (position[i][j] !== undefined) return position[i][j];
-      } if (
-        position[i][j] === position[i + 1][j + 1]
-        && position[i][j] === position[i + 2][j + 2]
-      ) {
-        if (position[i][j] !== undefined) return position[i][j];
-      } if (
-        position[i][j + 2] === position[i + 1][j + 1]
-        && position[i][j + 2] === position[i + 2][j]
-      ) {
-        if (position[i][j] !== undefined) return position[i][j];
-      }
-    }
-  }
-  return undefined;
+  // for (let i = 0; i < position.length; i += 1) {
+  //   for (let j = 0; i < position[i].length; j += 1) {
+  //     if (position[i][j] === position[i][j + 1] && position[i][j] === position[i][j + 2]) {
+  //       if (position[i][j] !== undefined) return position[i][j];
+  //     } if (position[i][j] === position[i + 1][j] && position[i][j] === position[i + 2][j]) {
+  //       if (position[i][j] !== undefined) return position[i][j];
+  //     } if (
+  //       position[i][j] === position[i + 1][j + 1]
+  //       && position[i][j] === position[i + 2][j + 2]
+  //     ) {
+  //       if (position[i][j] !== undefined) return position[i][j];
+  //     } if (
+  //       position[i][j + 2] === position[i + 1][j + 1]
+  //       && position[i][j + 2] === position[i + 2][j]
+  //     ) {
+  //       if (position[i][j] !== undefined) return position[i][j];
+  //     }
+  //   }
+  // }
+  // return undefined;
 }
 
 module.exports = {

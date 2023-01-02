@@ -29,7 +29,8 @@
  *                                                    //  Ask her again.';
  */
 function willYouMarryMe(/* isPositiveAnswer */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
+
 }
 
 

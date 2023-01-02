@@ -1,3 +1,5 @@
+/* eslint-disable no-unreachable */
+/* eslint-disable no-empty-character-class */
 /* *************************************************************************************************
  *                                                                                                *
  * Please read the following tutorial before implementing tasks:                                   *
@@ -342,38 +344,51 @@ function getDigitalRoot(num) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(str) {
-  // throw new Error('Not implemented');
-  const stack = [];
-  const arr = [...str];
-  const objBracket = {
-    '': '',
-    ']': '[',
-    '}': '{',
-    ')': '(',
-    '>': '<',
-  };
-  // eslint-disable-next-line consistent-return
-  arr.forEach((element) => {
-    // eslint-disable-next-line no-constant-condition
-    if (
-      element === ']'
-      || element === '}'
-      || element === ')'
-      || element === '>'
-    ) {
-      if (objBracket[element] !== stack.pop()) {
-        return false;
-      }
-    } else {
-      stack.push(element);
-    }
-  });
-  if (stack.length !== 0) {
-    return false;
-  }
 
-  return true;
+// function isBracketsBalanced(str) {
+// throw new Error('Not implemented');
+// const stack = [];
+// const arr = [...str];
+// const objBracket = {
+//   '': '',
+//   ']': '[',
+//   '}': '{',
+//   ')': '(',
+//   '>': '<',
+// };
+// // eslint-disable-next-line consistent-return
+// arr.forEach((element) => {
+//   // eslint-disable-next-line no-constant-condition
+//   if (
+//     element === ']'
+//     || element === '}'
+//     || element === ')'
+//     || element === '>'
+//   ) {
+//     if (objBracket[element] === stack.pop() || stack.length === 0) {
+//       return false;
+//     }
+//   } else {
+//     stack.push(element);
+//   }
+// });
+// if (stack.length !== 0) {
+//   return false;
+// }
+
+// return true;
+
+// eslint-disable-next-line no-empty-character-class
+function isBracketsBalanced(str) {
+  const regex = /[]|{}|()|<>/;
+  let result = '';
+  let copy = str;
+
+  while (copy !== result) {
+    result = copy;
+    copy = copy.replace(regex, '');
+  }
+  return result.length === 0;
 }
 
 /**
@@ -497,28 +512,28 @@ function getMatrixProduct(m1, m2) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
+function evaluateTicTacToePosition(position) {
   // throw new Error('Not implemented');
-  // for (let i = 0; i < position.length; i += 1) {
-  //   for (let j = 0; i < position[i].length; j += 1) {
-  //     if (position[i][j] === position[i][j + 1] && position[i][j] === position[i][j + 2]) {
-  //       if (position[i][j] !== undefined) return position[i][j];
-  //     } if (position[i][j] === position[i + 1][j] && position[i][j] === position[i + 2][j]) {
-  //       if (position[i][j] !== undefined) return position[i][j];
-  //     } if (
-  //       position[i][j] === position[i + 1][j + 1]
-  //       && position[i][j] === position[i + 2][j + 2]
-  //     ) {
-  //       if (position[i][j] !== undefined) return position[i][j];
-  //     } if (
-  //       position[i][j + 2] === position[i + 1][j + 1]
-  //       && position[i][j + 2] === position[i + 2][j]
-  //     ) {
-  //       if (position[i][j] !== undefined) return position[i][j];
-  //     }
-  //   }
-  // }
-  // return undefined;
+  for (let i = 0; i < position.length; i += 1) {
+    for (let j = 0; i < position[i].length; j += 1) {
+      if (position[i][j] === position[i][j + 1] && position[i][j] === position[i][j + 2]) {
+        if (position[i][j] !== undefined) return position[i][j];
+      } if (position[i][j] === position[i + 1][j] && position[i][j] === position[i + 2][j]) {
+        if (position[i][j] !== undefined) return position[i][j];
+      } if (
+        position[i][j] === position[i + 1][j + 1]
+        && position[i][j] === position[i + 2][j + 2]
+      ) {
+        if (position[i][j] !== undefined) return position[i][j];
+      } if (
+        position[i][j + 2] === position[i + 1][j + 1]
+        && position[i][j + 2] === position[i + 2][j]
+      ) {
+        if (position[i][j] !== undefined) return position[i][j];
+      }
+    }
+  }
+  return undefined;
 }
 
 module.exports = {

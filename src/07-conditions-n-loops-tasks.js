@@ -362,12 +362,18 @@ function isBracketsBalanced(str) {
       || element === ')'
       || element === '>'
     ) {
-      if (stack.pop() !== objBracket[element]) return false;
+      if (objBracket[element] !== stack.pop()) {
+        return false;
+      }
     } else {
       stack.push(element);
     }
   });
-  return stack.length === 0;
+  if (stack.length !== 0) {
+    return false;
+  }
+
+  return true;
 }
 
 /**
@@ -407,13 +413,14 @@ function toNaryString(num, n) {
  *   ['/web/assets/style.css', '/.bin/mocha',  '/read.me'] => '/'
  *   ['/web/favicon.ico', '/web-scripts/dump', '/verbalizer/logs'] => '/'
  */
-function getCommonDirectoryPath(pathes) {
-  // throw new Error('Not implemented');
-  const result = ['/'];
-  // eslint-disable-next-line array-callback-return
-  pathes.map((e, i, arr) => {
-    if (e.split('/')[i] === arr[i + 1].split('/')[i]) {
-      result.push(`${e}/`);
+function getCommonDirectoryPath(paths) {
+  const result = [];
+  let counter = 0;
+  const array = paths.map((path) => path.split('/'));
+  array[0].forEach((path, i) => {
+    if (array.every((el) => el[i] === path && counter === i)) {
+      result.push(`${path}/`);
+      counter += 1;
     }
   });
   return result.join('');
@@ -437,9 +444,28 @@ function getCommonDirectoryPath(pathes) {
  *                         [ 6 ]]
  *
  */
-function getMatrixProduct(/* m1, m2 */) {
-  throw new Error('Not implemented');
+function getMatrixProduct(m1, m2) {
+  // throw new Error('Not implemented');
+  const m1NumRows = m1.length;
+  const m1NumCols = m1[0].length;
+  const m2NumCols = m2[0].length;
+  const m = new Array(m1NumRows);
+  // eslint-disable-next-line no-plusplus
+  for (let r = 0; r < m1NumRows; ++r) {
+    m[r] = new Array(m2NumCols);
+    // eslint-disable-next-line no-plusplus
+    for (let c = 0; c < m2NumCols; ++c) {
+      m[r][c] = 0;
+      // eslint-disable-next-line no-plusplus
+      for (let i = 0; i < m1NumCols; ++i) {
+        // eslint-disable-next-line no-undef
+        m[r][c] += m1[r][i] * m2[i][c];
+      }
+    }
+  }
+  return m;
 }
+
 
 /**
  * Returns the evaluation of the specified tic-tac-toe position.
@@ -472,7 +498,27 @@ function getMatrixProduct(/* m1, m2 */) {
  *
  */
 function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
+  // for (let i = 0; i < position.length; i += 1) {
+  //   for (let j = 0; i < position[i].length; j += 1) {
+  //     if (position[i][j] === position[i][j + 1] && position[i][j] === position[i][j + 2]) {
+  //       if (position[i][j] !== undefined) return position[i][j];
+  //     } if (position[i][j] === position[i + 1][j] && position[i][j] === position[i + 2][j]) {
+  //       if (position[i][j] !== undefined) return position[i][j];
+  //     } if (
+  //       position[i][j] === position[i + 1][j + 1]
+  //       && position[i][j] === position[i + 2][j + 2]
+  //     ) {
+  //       if (position[i][j] !== undefined) return position[i][j];
+  //     } if (
+  //       position[i][j + 2] === position[i + 1][j + 1]
+  //       && position[i][j + 2] === position[i + 2][j]
+  //     ) {
+  //       if (position[i][j] !== undefined) return position[i][j];
+  //     }
+  //   }
+  // }
+  // return undefined;
 }
 
 module.exports = {

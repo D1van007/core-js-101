@@ -108,34 +108,17 @@ function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 function angleBetweenClockHands(date) {
-  // const myDate = new Date(date);
-  // let hourDeg = (myDate.getHours() - 3) * 30 + myDate.getMinutes() * 0.5;
-  // const minDeg = myDate.getMinutes() * 6;
-  // if (hourDeg === 12) {
-  //   hourDeg = myDate.getHours() * 0 + myDate.getMinutes() * 0.5;
-  // }
-  // let anglesDeg = Math.abs(hourDeg - minDeg);
-  // if (anglesDeg > 180) {
-  //   anglesDeg = 360 - anglesDeg;
-  // }
-  // return Math.abs(anglesDeg * Math.PI / 180);
-  let minutes = date.getMinutes();
-  let hours = date.getHours() - 3;
-  
-  console.log(hours);
-  console.log(minutes);
- 
-  
-  let minutesHand = (360*minutes)/60;
-  let hoursHand = (360*(hours+minutes/60))/12;
-
-  
-  let angle= Math.abs(minutesHand-hoursHand);
-  if(angle>180) {
-    return Math.abs((360-angle)*Math.PI/180);
-  } else {
-    return Math.abs(angle*Math.PI/180)
+  const myDate = new Date(date);
+  let hourDeg = (myDate.getHours() - 3) * 30 + myDate.getMinutes() * 0.5;
+  const minDeg = myDate.getMinutes() * 6;
+  if (hourDeg === 12) {
+    hourDeg = myDate.getHours() * 0 + myDate.getMinutes() * 0.5;
   }
+  let anglesDeg = Math.abs(hourDeg - minDeg);
+  if (anglesDeg > 180) {
+    anglesDeg = 360 - anglesDeg;
+  }
+  return Math.abs(anglesDeg * Math.PI / 180);
 }
 
 
